@@ -10,7 +10,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: Build
         run: npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build
