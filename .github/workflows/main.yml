@@ -5,13 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 7
 
       - name: Build
-        run: npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build
+        run: pnpm install --frozen-lockfile && pnpm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
